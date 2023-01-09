@@ -1,3 +1,5 @@
+import "./images/cinema.png";
+
 export const sliderItems = [
     {
       id: 1,
@@ -21,6 +23,11 @@ export const sliderItems = [
       bg: "fbf0f4",
     },
   ];
+
+  export const logo = [
+    // {img: "https://ibb.co/tDch2Sp"}
+    {img: "cinema.png"}
+  ]
 
   export const categories = [
     {

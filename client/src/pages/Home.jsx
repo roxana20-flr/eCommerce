@@ -6,10 +6,14 @@ import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slider from '../components/Slider'
+import "./Home.css";
+
+
+
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
         <Announcement/>
         <Navbar/>
         <Slider/>

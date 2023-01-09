@@ -5,14 +5,17 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logo } from "../data";
+import cinema from "../images/cinema.png"
 
 const Container = styled.div`
-  height: 60px;
+  height: 80px;
+  background-color: white;
   ${mobile({ height: "50px" })}
 `;
 
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,8 +54,16 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
+  font-size: 25px;
+  ${mobile({ fontSize: "20px" })}
 `;
+
+const Line = styled.div`
+  height: 30px;
+  width: 2px;
+  background-color: black;
+`;
+
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -65,7 +76,12 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  color: black;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+`;
+
+const Image = styled.img`
+  height: 50px;
 `;
 
 const Navbar = () => {
@@ -74,14 +90,20 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
+        {logo.map((item) => (
+          <Image src={cinema}></Image>
+        ))}
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>Bilete</Logo>
+        </Center>
+        <Line/>
+        <Center>
+          <Logo>Oferte</Logo>
+        </Center>
+        <Line/>
+        <Center>
+          <Logo>Vauchere</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
