@@ -3,6 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
+import BirdBox from "../images/BirdBox.jpg"
+import InsideOut from "../images/InsideOut.jpg"
+import FastAndFurious8 from "../images/FastAndFurious8.jpg"
+import Pistruiatul from "../images/Pistruiatul.jpg"
+import TicketToParadise from "../images/TicketToParadise.jpg"
+import HouseOfGucci from "../images/HouseOfGucci.jpg"
 
 const Container = styled.div`
   width: 100%;
@@ -34,7 +40,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: white;
+  background-color: black;
   height: 100%;
   display: flex;
   transition: all 1.5s ease;
@@ -42,11 +48,13 @@ const Wrapper = styled.div`
 `;
 
 const Wrapper2 = styled.div`
-  background-color: white;
-  height: 65%;
+  background-color: black;
+  height: 70%;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
+  align-items: center;
+  justify-content: space-between;
 `;
 
 
@@ -64,13 +72,14 @@ const Slide = styled.div`
   height: 70%;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
+  background-color: black;
+  justify-content: space-between;
 `;
 
 const Oval = styled.div`
 border-radius: 10px;
 background: white;
-padding: 16px;
+padding: 14px;
 width: 17px;
 height: 0.5px;
 margin-right: 30px;
@@ -93,17 +102,20 @@ margin-bottom: 10px;
 `;
 
 const ImgContainer = styled.div`
-  height: 100%;
+  height: 20vw;
   flex: 1;
+  background-color: black;
+  margin-right: 2px;
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 20vw;
 `;
 
 const InfoContainer = styled.div`
-  flex: 1;
-  padding: 50px;
+display: flex;
+align-items: center;
+justify-content: space-between;
 `;
 
 const Title = styled.h1`
@@ -122,6 +134,17 @@ const Button = styled.button`
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+`;
+
+const Center = styled.div`
+  flex: 1;
+  text-align: center;
+`;
+
+const Line = styled.div`
+  height: 15vw;
+  width: 2px;
+  background-color: white;
 `;
 
 const Slider = () => {
@@ -165,14 +188,52 @@ const Slider = () => {
             <Wrapper2 slideIndex={slideIndex}>
         {sliderItems.map((item) => (
             <Slide bg={item.bg} key={item.id} >
+              <Center>
+              <InfoContainer>
+
+              <Center>
             <ImgContainer>
-              <Image src={item.img} />
+              <Image src={item.img1} />
             </ImgContainer>
-            <InfoContainer>
-              <Title>{item.title}</Title>
+            </Center>
+
+            <Line/>
+
+            <Center>
+            <ImgContainer>
+              <Image src={item.img2} />
+            </ImgContainer>
+            </Center>
+
+            <Line/>
+
+            <Center>
+            <ImgContainer>
+              <Image src={item.img3} />
+            </ImgContainer>
+            </Center>
+
+            <Line/>
+
+            <Center>
+            <ImgContainer>
+              <Image src={item.img4} />
+            </ImgContainer>
+            </Center>
+
+            <Line/>
+            
+            <Center>
+            <ImgContainer>
+              <Image src={item.img5} />
+            </ImgContainer>
+            </Center>
+            
+              {/* <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
-            </InfoContainer>
+              <Button>SHOW NOW</Button> */}
+            </InfoContainer></Center>
+            
             </Slide>    
         ))}
         </Wrapper2>

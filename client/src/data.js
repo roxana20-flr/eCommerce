@@ -1,26 +1,52 @@
-import "./images/cinema.png";
+import BirdBox from "./images/BirdBox.jpg"
+import InsideOut from "./images/InsideOut.jpg"
+import FastAndFurious8 from "./images/FastAndFurious8.jpg"
+import Pistruiatul from "./images/Pistruiatul.jpg"
+import TicketToParadise from "./images/TicketToParadise.jpg"
+import HouseOfGucci from "./images/HouseOfGucci.jpg"
+import BlackPantherWakandaForever from "./images/BlackPantherWakandaForever.jpg"
+import Smile from "./images/Smile.jpg"
+import HarrisGoesToParis from "./images/HarrisGoesToParis.jpg"
+import TheMenu from "./images/TheMenu.jpg"
+import SeeHowTheyRun from "./images/SeeHowTheyRun.jpg"
+import BlackAdam from "./images/BlackAdam.jpg"
+import AvatarTheWayofWater from "./images/AvatarTheWayofWater.jpg"
+import TheWomanKing from "./images/TheWomanKing.jpg"
+import Metronom from "./images/Metronom.jpg"
 
 export const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/XsdmR2c/1.png",
+      img1: `${BirdBox}`,
+      img2: `${Pistruiatul}`,
+      img3: `${TicketToParadise}`,
+      img4: `${HouseOfGucci}`,
+      img5: `${FastAndFurious8}`,
       title: "SUMMER SALE",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "f5fafd",
+      bg: "ffffff",
     },
     {
       id: 2,
-      img: "https://i.ibb.co/DG69bQ4/2.png",
+      img1: `${InsideOut}`,
+      img2: `${BlackPantherWakandaForever}`,
+      img3: `${Smile}`,
+      img4: `${HarrisGoesToParis}`,
+      img5: `${Metronom}`,
       title: "AUTUMN COLLECTION",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "fcf1ed",
+      bg: "ffffff",
     },
     {
       id: 3,
-      img: "https://i.ibb.co/cXFnLLV/3.png",
+      img1: `${TheMenu}`,
+      img2: `${SeeHowTheyRun}`,
+      img3: `${BlackAdam}`,
+      img4: `${AvatarTheWayofWater}`,
+      img5: `${TheWomanKing}`,
       title: "LOUNGEWEAR LOVE",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "fbf0f4",
+      bg: "ffffff",
     },
   ];
 
