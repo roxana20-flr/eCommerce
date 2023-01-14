@@ -1,18 +1,21 @@
 import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { newsletter } from "../data";
 
 const Container = styled.div`
   height: 60vh;
-  background-color: #fcf5f5;
+  // background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 10vh;
 `;
 const Title = styled.h1`
   font-size: 70px;
   margin-bottom: 20px;
+  color: white;
 `;
 
 const Desc = styled.div`
@@ -20,6 +23,7 @@ const Desc = styled.div`
   font-weight: 300;
   margin-bottom: 20px;
   ${mobile({ textAlign: "center" })}
+  color: white;
 `;
 
 const InputContainer = styled.div`
@@ -41,7 +45,7 @@ const Input = styled.input`
 const Button = styled.button`
   flex: 1;
   border: none;
-  background-color: teal;
+  background-color: black;
   color: white;
 `;
 
@@ -49,7 +53,7 @@ const Newsletter = () => {
   return (
     <Container>
       <Title>Newsletter</Title>
-      <Desc>Get timely updates from your favorite products.</Desc>
+      <Desc>Primește oferte personalizate, abonează-te acum!</Desc>
       <InputContainer>
         <Input placeholder="Your email" />
         <Button>

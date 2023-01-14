@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slider from '../components/Slider'
+import Bottom from "../components/Bottom";
 import "./Home.css";
 
 
@@ -21,6 +22,7 @@ const Home = () => {
         <Products/>
         <Newsletter/>
         <Footer/>
+        <Bottom/>
     </div>
   )
 }

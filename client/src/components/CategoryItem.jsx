@@ -7,10 +7,11 @@ const Container = styled.div`
   margin: 3px;
   height: 70vh;
   position: relative;
+  margin-top: 10vh;
 `;
 
 const Image = styled.img`
-  width: 100%;
+  width: 96%;
   height: 100%;
   object-fit: cover;
   ${mobile({ height: "20vh" })}
@@ -39,7 +40,9 @@ const Button = styled.button`
     background-color: white;
     color:gray;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 300;
+    color: black;
+    text-decoration-style: solid;
 `;
 
 const CategoryItem = ({ item }) => {
@@ -49,7 +52,7 @@ const CategoryItem = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
+        <Button>EXPLOREAZA</Button>
       </Info>
       </Link>
     </Container>

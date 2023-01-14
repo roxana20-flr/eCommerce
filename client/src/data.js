@@ -13,6 +13,10 @@ import BlackAdam from "./images/BlackAdam.jpg"
 import AvatarTheWayofWater from "./images/AvatarTheWayofWater.jpg"
 import TheWomanKing from "./images/TheWomanKing.jpg"
 import Metronom from "./images/Metronom.jpg"
+import Offers from "./images/offers.png"
+import Vauchers from "./images/vaucere.png"
+import Tickets from "./images/bilete.png"
+import Newslwtter from "./images/newsletter.jpg"
 
 export const sliderItems = [
     {
@@ -55,23 +59,27 @@ export const sliderItems = [
     {img: "cinema.png"}
   ]
 
+  export const newsletter = [
+    {img: `${Newslwtter}`}
+  ]
+
   export const categories = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "SHIRT STYLE!",
+      img: `${Tickets}`,
+      title: "BILETE",
       cat: "women"
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "LOUNGEWEAR LOVE",
+      img: `${Offers}`,
+      title: "OFERTE",
       cat: "barbati"
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      title: "LIGHT JACKETS",
+      img: `${Vauchers}`,
+      title: "VAUCHERE",
       cat: "jeans"
     },
   ];
