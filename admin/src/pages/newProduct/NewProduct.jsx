@@ -14,6 +14,8 @@ export default function NewProduct() {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState([]);
+  const [city, setCity] = useState([]);
+  const [cinema, setCinema] = useState([]);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -62,11 +64,19 @@ export default function NewProduct() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = { ...inputs, img: downloadURL, categories: cat };
+          const product = { ...inputs, img: downloadURL, categories: cat, city: city, cinema: cinema };
           addProduct(product, dispatch);
         });
       }
     );
+  }
+
+  const onChangeHandler = (e) => {
+    setCinema(e.target.value.split(","));
+  }
+
+  const onChangeHandler2 = (e) => {
+    setCity(e.target.value.split(","));
   }
 
   console.log(file)
@@ -114,6 +124,25 @@ export default function NewProduct() {
           <label>Categories</label>
           <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
         </div>
+        <div className="addProductItem">
+          <label>City</label>
+          <input
+            name="city"
+            type="text"
+            placeholder="Timisoara"
+            // onChange={e => { handleChange; handleCat }}
+            onChange={onChangeHandler2}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Cinema</label>
+          <input
+            name="cinema"
+            type="text"
+            placeholder="Cinema City Timisoara"
+            onChange={onChangeHandler}
+          />
+          </div>
         <div className="addProductItem">
           <label>Stock</label>
           <select name="inStock" onChange={handleChange}>

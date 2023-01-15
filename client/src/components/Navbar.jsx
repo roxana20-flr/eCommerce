@@ -86,16 +86,19 @@ const Image = styled.img`
 
 const Navbar = () => {
   const quantity = useSelector(state=>state.cart.quantity)
+  
   return (
     <Container>
       <Wrapper>
         <Left>
-        {logo.map((item) => (
+        <Link to={`/`}>
           <Image src={cinema}></Image>
-        ))}
+        </Link>
         </Left>
         <Center>
+        <Link style={{textDecoration: 'none', color: "black"}}  to={`/products/bilete`}>
           <Logo>Bilete</Logo>
+          </Link>
         </Center>
         <Line/>
         <Center>

@@ -68,19 +68,19 @@ export const sliderItems = [
       id: 1,
       img: `${Tickets}`,
       title: "BILETE",
-      cat: "women"
+      cat: "bilete"
     },
     {
       id: 2,
       img: `${Offers}`,
       title: "OFERTE",
-      cat: "barbati"
+      cat: "oferte"
     },
     {
       id: 3,
       img: `${Vauchers}`,
       title: "VAUCHERE",
-      cat: "jeans"
+      cat: "vauchere"
     },
   ];
 

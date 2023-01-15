@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Bottom from "../components/Bottom";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
@@ -10,6 +11,7 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import "./Home.css";
 
 const Container = styled.div``;
 
@@ -34,6 +36,7 @@ const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
   ${mobile({ padding: "10px" })}
+  background-color: white;
 `;
 
 const Title = styled.h1`
@@ -67,21 +70,20 @@ const FilterTitle = styled.span`
   font-weight: 200;
 `;
 
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
+const FilterCinema = styled.select`
+margin-left: 10px;
+margin-right: 10px;
+padding: 5px;
 `;
 
-const FilterSize = styled.select`
+const FilterCity = styled.select`
   margin-left: 10px;
   padding: 5px;
 `;
 
-const FilterSizeOption = styled.option``;
+const FilterCityOption = styled.option``;
+
+const FilterCinemaOption = styled.option``;
 
 const AddContainer = styled.div`
   width: 50%;
@@ -101,7 +103,7 @@ const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid teal;
+  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,8 +111,9 @@ const Amount = styled.span`
 `;
 
 const Button = styled.button`
+  margin-left: 10px;
   padding: 15px;
-  border: 2px solid teal;
+  border: 2px solid black;
   background-color: white;
   cursor: pointer;
   font-weight: 500;
@@ -124,8 +127,8 @@ const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
+  const [cinema, setCinema] = useState("");
+  const [city, setCity] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -148,16 +151,16 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(
-      addProduct({ ...product, quantity, color, size })
+      addProduct({ ...product, quantity, cinema, city })
   );
   };
 
 
 
   return (
-    <Container>
-      <Navbar />
+    <Container className="home">
       <Announcement />
+      <Navbar />
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} alt="imagine"/>
@@ -167,28 +170,30 @@ const Product = () => {
           <Desc>
             {product.desc}
           </Desc>
-          <Price>$ {product.price}</Price>
+          <Price>{product.price} Lei</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
-              {product.color?.map((c) => (
-                <FilterColor color={c} key={c} onClick={() => setColor(c)}/>
-              ))}
+              <FilterTitle>Cinema</FilterTitle>
+              <FilterCinema onChange={(e) => setCinema(e.target.value)}>
+              {product.cinema?.map((s) => (
+                  <FilterCinemaOption key={s}>{s}</FilterCinemaOption>
+                ))}
+              </FilterCinema>
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e) => setSize(e.target.value)}>
-              {product.size?.map((s) => (
-                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+              <FilterTitle>City</FilterTitle>
+              <FilterCity onChange={(e) => setCity(e.target.value)}>
+              {product.city?.map((s) => (
+                  <FilterCityOption key={s}>{s}</FilterCityOption>
                 ))}
-              </FilterSize>
+              </FilterCity>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-            <Remove onClick={() => handleQuantity("dec")} />
+            <Remove style={{cursor: "pointer"}} onClick={() => handleQuantity("dec")} />
               <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("inc")} />
+              <Add style={{cursor: "pointer"}} onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
@@ -196,6 +201,7 @@ const Product = () => {
       </Wrapper>
       <Newsletter />
       <Footer />
+      <Bottom/>
     </Container>
   );
 };

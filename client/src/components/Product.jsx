@@ -30,7 +30,6 @@ import {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5fbfd;
     position: relative;
   
     &:hover ${Info}{
@@ -42,7 +41,6 @@ import {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: white;
     position: absolute;
   `;
   
@@ -66,12 +64,35 @@ import {
       transform: scale(1.1);
     }
   `;
+
+  const Title = styled.div`
+  color: white;
+`;
+
+const Price = styled.div`
+color: white;
+`;
+
+const Informati = styled.div`
+  
+`;
+
+const Center = styled.div`
+  flex: 1;
+  text-align: center;
+`;
   
   const Product = ({ item }) => {
     return (
       <Container>
         <Circle />
+        <Center>
         <Image src={item.img} />
+        <Informati>
+          <Title>{item.title}</Title>
+          <Price>{item.price} lei</Price>
+        </Informati>
+        </Center>
         <Info>
           <Icon>
             <ShoppingCartOutlined />

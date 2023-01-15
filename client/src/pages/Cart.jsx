@@ -3,12 +3,15 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Bottom from "../components/Bottom";
 import { mobile } from "../responsive";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+import { addProduct, addToCart, decreaseCart, getTotals} from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -50,7 +53,7 @@ const TopText = styled.span`
   margin: 0px 10px;
 `;
 
-const Bottom = styled.div`
+const Jos = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
@@ -165,6 +168,8 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const history = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -185,10 +190,24 @@ const Cart = () => {
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history]);
 
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+  const handleDecreaseCart = (product) => {
+    dispatch(decreaseCart(product));
+  };
+
+ 
+
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
@@ -199,7 +218,7 @@ const Cart = () => {
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
-        <Bottom>
+        <Jos>
           <Info>
           {cart.products.map((product) => (
               <Product>
@@ -212,20 +231,20 @@ const Cart = () => {
                     <ProductId>
                       <b>ID:</b> {product._id}
                     </ProductId>
-                    <ProductColor color={product.color} />
+                    <ProductColor color={product.cinema} />
                     <ProductSize>
-                      <b>Size:</b> {product.size}
+                      <b>City:</b> {product.city}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove />
+                    <Add onClick={() => handleAddToCart(product)}/>
+                    Cantitate bilete: <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove onClick={() => handleDecreaseCart(product)}/>
                   </ProductAmountContainer>
                   <ProductPrice>
-                    $ {product.price * product.quantity}
+                     {product.price * product.quantity} Lei
                   </ProductPrice>
                 </PriceDetail>
               </Product>
@@ -262,9 +281,10 @@ const Cart = () => {
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
           </Summary>
-        </Bottom>
+        </Jos>
       </Wrapper>
       <Footer />
+      <Bottom/>
     </Container>
   );
 };
