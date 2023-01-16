@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { toast } from "react-toastify";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -10,13 +9,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      // console.log("state prod ")
-      // console.log(state)
-      // console.log("action prod ")
-      // console.log(action)
       state.quantity += 1;
-      // console.log("state.quantity prod ")
-      // console.log(state.quantity)
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.quantity;
     },
@@ -38,22 +31,12 @@ const cartSlice = createSlice({
       localStorage.setItem("products", JSON.stringify(state.products));
     },
     decreaseCart(state, action) {
-      // console.log("state")
-      // console.log(state)
-      // console.log("action")
-      // console.log(action)
       const itemIndex = state.products.findIndex(
         (item) => item._id === action.payload._id
       );
-      // console.log("state.products")
-      // console.log(state.products)
-      // console.log("itemIndex")
-      //   console.log(itemIndex)
 
       if (state.products[itemIndex].quantity > 1) {
         state.products[itemIndex].quantity -= 1;
-        // console.log("state.products[itemIndex].quantity")
-        // console.log(state.products[itemIndex].quantity)
 
       } else if (state.products[itemIndex].quantity === 1) {
         const nextCartItems = state.products.filter(

@@ -3,12 +3,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
-import BirdBox from "../images/BirdBox.jpg"
-import InsideOut from "../images/InsideOut.jpg"
-import FastAndFurious8 from "../images/FastAndFurious8.jpg"
-import Pistruiatul from "../images/Pistruiatul.jpg"
-import TicketToParadise from "../images/TicketToParadise.jpg"
-import HouseOfGucci from "../images/HouseOfGucci.jpg"
 
 const Container = styled.div`
   width: 100%;
@@ -118,24 +112,6 @@ align-items: center;
 justify-content: space-between;
 `;
 
-const Title = styled.h1`
-  font-size: 70px;
-`;
-
-const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
 const Center = styled.div`
   flex: 1;
   text-align: center;
@@ -228,10 +204,6 @@ const Slider = () => {
               <Image src={item.img5} />
             </ImgContainer>
             </Center>
-            
-              {/* <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button> */}
             </InfoContainer></Center>
             
             </Slide>    

@@ -10,7 +10,7 @@ import { userRequest } from "../requestMethods";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import { addProduct, addToCart, decreaseCart, getTotals} from "../redux/cartRedux";
+import { addToCart, decreaseCart, getTotals} from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -127,12 +127,6 @@ const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
   ${mobile({ marginBottom: "20px" })}
-`;
-
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
 `;
 
 const Summary = styled.div`
@@ -260,11 +254,8 @@ const Center = styled.div`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  // console.log("cart")
-  // console.log(cart)
   const [stripeToken, setStripeToken] = useState(null);
   const history = useNavigate();
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
   const onToken = (token) => {
@@ -296,8 +287,6 @@ const Cart = () => {
   };
   
   const handleDecreaseCart = (product) => {
-    // console.log("prod din cart")
-    // console.log(product)
     dispatch(decreaseCart(product));
   };
 

@@ -100,12 +100,6 @@ const Center = styled.div`
   text-align: center;
 `;
 
-
-const Title = styled.h1`
-  margin: 20px;
-  color: white;
-`;
-
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;

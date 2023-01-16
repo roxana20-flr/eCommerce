@@ -1,21 +1,15 @@
-import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Bottom from "../components/Bottom";
 import { mobile } from "../responsive";
-import { useEffect, useState } from "react";
-import { userRequest } from "../requestMethods";
-import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import StripeCheckout from "react-stripe-checkout";
 import { removeFromFavorite} from "../redux/favoriteRedux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``;
 
@@ -111,63 +105,11 @@ const PriceDetail = styled.div`
   justify-content: center;
 `;
 
-const ProductAmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
-`;
-
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
   ${mobile({ marginBottom: "20px" })}
 `;
-
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
-`;
-
-const Summary = styled.div`
-  flex: 1;
-  border: 0.5px solid lightgray;
-  border-radius: 10px;
-  padding: 20px;
-  height: 50vh;
-  background-color: white;
-`;
-
-const SummaryTitle = styled.h1`
-  font-weight: 200;
-`;
-
-const SummaryItem = styled.div`
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
-`;
-
-const SummaryItemText = styled.span``;
-
-const SummaryItemPrice = styled.span``;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-`;
-
 
 const Container3 = styled.div`
 width: 100%;
@@ -260,43 +202,12 @@ const Center = styled.div`
 
 const Favorite = () => {
   const favorite = useSelector((state) => state.favorite);
-  // console.log("favorite")
-  // console.log(favorite)
   const dispatch = useDispatch();
 
   const handleRemoveFromFav = (product, quantity) => {
     dispatch(removeFromFavorite(product, quantity));
-    // console.log("product removeFromFavorite");
-    // console.log(product);
   };
-  // const [stripeToken, setStripeToken] = useState(null);
-  // const history = useNavigate();
-  // const quantity= 1;
-  // const dispatch = useDispatch();
 
-  // const onToken = (token) => {
-  //   setStripeToken(token);
-  // };
-  
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       const res = await userRequest.post("/checkout/payment", {
-  //         tokenId: stripeToken.id,
-  //         amount: 500,
-  //       });
-  //       history.push("/success", {
-  //         stripeData: res.data,
-  //         products: favorite, });
-  //     } catch {}
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, favorite.total, history]);
-
-
-  
-
- 
 
   return (
     <Container className="home">

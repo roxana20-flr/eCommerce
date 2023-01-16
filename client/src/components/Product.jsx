@@ -4,12 +4,10 @@ import {
     ShoppingCartOutlined,
   } from "@material-ui/icons";
   import styled from "styled-components";
-  import { Link, useNavigate } from "react-router-dom";
-  import { addProduct, addToFav } from "../redux/favoriteRedux";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+  import { Link} from "react-router-dom";
+  import { addProduct} from "../redux/favoriteRedux";
+import { useDispatch} from "react-redux";
 import { useEffect, useState } from "react";
-import { publicRequest } from "../requestMethods";
   
   const Info = styled.div`
     opacity: 0;
@@ -88,59 +86,26 @@ const Center = styled.div`
 `;
   
   const Product = ({ item }) => {
-    // const location = useLocation();
-    const id = "product/" + item._id;
-    // console.log("id");
-    // console.log(id);
-    // console.log("item");
-    // console.log(item);
     
     const [product, setProduct] = useState({});
     const quantity=1;
     const dispatch = useDispatch();
-    // const history = useNavigate();
-    // const products = useSelector((state) => state.products);
-    // const favorite = useSelector((state) => state.favorite);
-    // console.log("favorite")
-    // console.log(favorite)
-    // console.log("prod")
-    // console.log(products)
   
     useEffect(() => {
       const getProduct = async () => {
         try {
-          // const res = await publicRequest.get("/products/find/" + id);
-          // setProduct(res.data);
-          // console.log("res")
-          // console.log(res)
           setProduct(item);
         } catch {}
       };
       getProduct();
     });
 
-    // setProduct(item);
-
-    // const { data, error, isLoading } = useGetAllProductsQuery();
-  
-  
-    //CRED CA AICI ESTE PROBLEMA
     const handleClick = () => {
       dispatch(
         addProduct({ ...product, quantity})
     );
-    // console.log("product");
-    // console.log(product);
-    // console.log("quantity");
-    // console.log(quantity);
     };
 
-    // const handleClick = (product) => {
-    //   dispatch(
-    //     addToFav({ product})
-    // );
-    // history.push("/favorite");
-    // };
 
     
 

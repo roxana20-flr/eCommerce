@@ -7,7 +7,6 @@ import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slider from '../components/Slider'
 import Bottom from "../components/Bottom";
-import { categories } from "../data";
 import "./Home.css";
 
 
