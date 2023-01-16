@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Search, ShoppingCartOutlined, FavoriteBorderOutlined, } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -85,7 +85,10 @@ const Image = styled.img`
 `;
 
 const Navbar = () => {
-  const quantity = useSelector(state=>state.cart.quantity)
+  const quantity1 = useSelector(state=>state.cart.quantity)
+  // console.log(quantity)
+  const quantity2 = useSelector(state=>state.favorite.quantity)
+  // console.log(quantity2)
   
   return (
     <Container>
@@ -113,8 +116,15 @@ const Navbar = () => {
           <MenuItem>SIGN IN</MenuItem>
           <Link to="/cart">
           <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
+            <Badge badgeContent={quantity1} color="primary">
               <ShoppingCartOutlined />
+            </Badge>
+          </MenuItem>
+          </Link>
+          <Link to="/favorite">
+          <MenuItem>
+            <Badge badgeContent={quantity2} color="primary">
+            <FavoriteBorderOutlined />
             </Badge>
           </MenuItem>
           </Link>

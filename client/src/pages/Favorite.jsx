@@ -10,7 +10,7 @@ import { userRequest } from "../requestMethods";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import { addProduct, addToCart, decreaseCart, getTotals} from "../redux/cartRedux";
+import { removeFromFavorite} from "../redux/favoriteRedux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -258,48 +258,43 @@ const Center = styled.div`
 
 
 
-const Cart = () => {
-  const cart = useSelector((state) => state.cart);
-  // console.log("cart")
-  // console.log(cart)
-  const [stripeToken, setStripeToken] = useState(null);
-  const history = useNavigate();
-  const [quantity, setQuantity] = useState(1);
+const Favorite = () => {
+  const favorite = useSelector((state) => state.favorite);
+  // console.log("favorite")
+  // console.log(favorite)
   const dispatch = useDispatch();
 
-  const onToken = (token) => {
-    setStripeToken(token);
+  const handleRemoveFromFav = (product, quantity) => {
+    dispatch(removeFromFavorite(product, quantity));
+    // console.log("product removeFromFavorite");
+    // console.log(product);
   };
+  // const [stripeToken, setStripeToken] = useState(null);
+  // const history = useNavigate();
+  // const quantity= 1;
+  // const dispatch = useDispatch();
+
+  // const onToken = (token) => {
+  //   setStripeToken(token);
+  // };
   
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: 500,
-        });
-        history.push("/success", {
-          stripeData: res.data,
-          products: cart, });
-      } catch {}
-    };
-    stripeToken && makeRequest();
-  }, [stripeToken, cart.total, history]);
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await userRequest.post("/checkout/payment", {
+  //         tokenId: stripeToken.id,
+  //         amount: 500,
+  //       });
+  //       history.push("/success", {
+  //         stripeData: res.data,
+  //         products: favorite, });
+  //     } catch {}
+  //   };
+  //   stripeToken && makeRequest();
+  // }, [stripeToken, favorite.total, history]);
 
 
-  useEffect(() => {
-    dispatch(getTotals());
-  }, [cart, dispatch]);
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
   
-  const handleDecreaseCart = (product) => {
-    // console.log("prod din cart")
-    // console.log(product)
-    dispatch(decreaseCart(product));
-  };
 
  
 
@@ -405,7 +400,7 @@ const Cart = () => {
       <Wrapper>
         <Jos>
           <Info>
-          {cart.products.map((product) => (
+          {favorite.products.map((product) => (
               <Product>
                 <ProductDetail>
                   <Image src={product.img} />
@@ -423,49 +418,17 @@ const Cart = () => {
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
-                  <ProductAmountContainer>
-                    <Add onClick={() => handleAddToCart(product)}/>
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove onClick={() => handleDecreaseCart(product)}/>
-                  </ProductAmountContainer>
                   <ProductPrice>
-                     {product.price * product.quantity} Lei
+                     {product.price } Lei
                   </ProductPrice>
                 </PriceDetail>
+                <button onClick={() => handleRemoveFromFav(product)}>
+                        Remove
+                      </button>
               </Product>
             ))}
           </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <StripeCheckout
-              name="Lama Shop"
-              image="https://avatars.githubusercontent.com/u/1486366?v=4"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            >
-              <Button>CHECKOUT NOW</Button>
-            </StripeCheckout>
-          </Summary>
+          
         </Jos>
       </Wrapper>
       <Footer />
@@ -474,4 +437,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Favorite;

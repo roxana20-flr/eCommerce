@@ -125,6 +125,8 @@ const Button = styled.button`
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+  // console.log("id2");
+  //   console.log(location.pathname);
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [cinema, setCinema] = useState("");
@@ -136,6 +138,8 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        // console.log("res2")
+        // console.log(res.data)
       } catch {}
     };
     getProduct();
