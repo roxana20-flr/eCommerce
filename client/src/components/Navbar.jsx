@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { ShoppingCartOutlined, FavoriteBorderOutlined, } from "@material-ui/icons";
+import { ShoppingCartOutlined, FavoriteBorderOutlined, PersonOutlineOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -67,6 +67,9 @@ const Image = styled.img`
 const Navbar = () => {
   const quantity1 = useSelector(state=>state.cart.quantity)
   const quantity2 = useSelector(state=>state.favorite.quantity)
+  const user = useSelector((state) => state.user.currentUser);
+  console.log("user nav")
+  console.log(user)
   
   return (
     <Container>
@@ -91,7 +94,6 @@ const Navbar = () => {
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
           <Link to="/cart">
           <MenuItem>
             <Badge badgeContent={quantity1} color="primary">
@@ -106,6 +108,18 @@ const Navbar = () => {
             </Badge>
           </MenuItem>
           </Link>
+
+          <MenuItem>
+          {user ? 
+          <Link to="/user">
+              <PersonOutlineOutlined  />
+              </Link> 
+              : 
+              <Link to="/login">
+              <MenuItem>SIGN IN</MenuItem>
+              </Link>}
+          </MenuItem>
+
         </Right>
       </Wrapper>
     </Container>
