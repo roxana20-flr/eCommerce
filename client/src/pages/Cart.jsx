@@ -14,6 +14,8 @@ import { addToCart, decreaseCart, getTotals} from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import cinema from "../images/cinema.png"
+import Newsletter from "../components/Newsletter";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -337,16 +339,29 @@ const Cart = () => {
               <InfoContainer>
 
 
-              <Title>YOUR BAG</Title>
+              <Title>ALEGERILE TALE</Title>
         <Top>
         <Link to={`/products/bilete`}>
-          <TopButton type="filled">CONTINUE SHOPPING</TopButton>
+          <TopButton type="filled">CONTINUA CUMARATURILE</TopButton>
         </Link>
-          <TopTexts>
+          {/* <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
+          </TopTexts> */}
+
+<StripeCheckout
+              name="Cinematime"
+              image={cinema}
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              
           <TopButton type="filled">CHECKOUT NOW</TopButton>
+            </StripeCheckout>
         </Top>
 
 
@@ -400,14 +415,14 @@ const Cart = () => {
                   <Image src={product.img} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b>Produs:</b> {product.title}
                     </ProductName>
                     <ProductId>
                       <b>ID:</b> {product._id}
                     </ProductId>
                     <ProductColor color={product.cinema} />
                     <ProductSize>
-                      <b>City:</b> {product.city}
+                      <b>Oras:</b> {product.city}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
@@ -443,8 +458,8 @@ const Cart = () => {
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
-              name="Lama Shop"
-              image="https://avatars.githubusercontent.com/u/1486366?v=4"
+              name="Cinematime"
+              image={cinema}
               billingAddress
               shippingAddress
               description={`Your total is $${cart.total}`}
@@ -457,6 +472,8 @@ const Cart = () => {
           </Summary>
         </Jos>
       </Wrapper>
+
+      <Newsletter />
       <Footer />
       <Bottom/>
     </Container>

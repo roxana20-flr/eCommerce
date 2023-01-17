@@ -9,6 +9,7 @@ import { removeFromFavorite} from "../redux/favoriteRedux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import Newsletter from "../components/Newsletter";
 
 
 const Container = styled.div``;
@@ -254,17 +255,7 @@ const Favorite = () => {
               <InfoContainer>
 
 
-              <Title>YOUR BAG</Title>
-        <Top>
-        <Link to={`/products/bilete`}>
-          <TopButton type="filled">CONTINUE SHOPPING</TopButton>
-        </Link>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
+              <Title>FAVORITELE TALE</Title>
 
 
             </InfoContainer>
@@ -317,14 +308,14 @@ const Favorite = () => {
                   <Image src={product.img} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b>Produs:</b> {product.title}
                     </ProductName>
                     <ProductId>
                       <b>ID:</b> {product._id}
                     </ProductId>
                     <ProductColor color={product.cinema} />
                     <ProductSize>
-                      <b>City:</b> {product.city}
+                      <b>Oras:</b> {product.city}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
@@ -342,6 +333,8 @@ const Favorite = () => {
           
         </Jos>
       </Wrapper>
+
+      <Newsletter />
       <Footer />
       <Bottom/>
     </Container>

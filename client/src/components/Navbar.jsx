@@ -93,7 +93,7 @@ const Navbar = () => {
           <Logo>Vauchere</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
+          {/* <MenuItem>REGISTER</MenuItem> */}
           <Link to="/cart">
           <MenuItem>
             <Badge badgeContent={quantity1} color="primary">

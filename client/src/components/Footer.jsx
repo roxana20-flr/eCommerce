@@ -1,3 +1,4 @@
+import { Link } from "@material-ui/core";
 import {
     Facebook,
     Instagram,
@@ -88,7 +89,7 @@ import {
     return (
       <Container>
         <Left>
-          <Logo>LAMA.</Logo>
+          <Logo>CINEMATIME</Logo>
           <Desc>
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
@@ -110,30 +111,41 @@ import {
           </SocialContainer>
         </Left>
         <Center>
-          <Title>Useful Links</Title>
+          <Title>Descopera</Title>
           <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Cart</ListItem>
-            <ListItem>Man Fashion</ListItem>
-            <ListItem>Woman Fashion</ListItem>
-            <ListItem>Accessories</ListItem>
-            <ListItem>My Account</ListItem>
-            <ListItem>Order Tracking</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Terms</ListItem>
+            <ListItem>
+            <Link to="/" style={{color: "black", cursor: "pointer"}}>Home</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="/products/:category" style={{color: "black", cursor: "pointer"}}>Bilete</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="" style={{color: "black", cursor: "pointer"}}>Oferte</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="" style={{color: "black", cursor: "pointer"}}>Vauchere</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="/cart" style={{color: "black", cursor: "pointer"}}>Cos</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="/favorite" style={{color: "black", cursor: "pointer"}}>favorite</Link>
+            </ListItem>
+            <ListItem>
+            <Link to="/user" style={{color: "black", cursor: "pointer"}}>Contul Meu</Link>
+            </ListItem>
           </List>
         </Center>
         <Right>
           <Title>Contact</Title>
           <ContactItem>
-            <Room style={{marginRight:"10px"}}/> 622 Dixie Path , South Tobinchester 98336
+            <Room style={{marginRight:"10px"}}/> Romania , Timisoara 98336
           </ContactItem>
           <ContactItem>
             <Phone style={{marginRight:"10px"}}/> +1 234 56 78
           </ContactItem>
           <ContactItem>
-            <MailOutline style={{marginRight:"10px"}} /> contact@lama.dev
+            <MailOutline style={{marginRight:"10px"}} /> contact@cinematime.dev
           </ContactItem>
           <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
         </Right>
