@@ -1,4 +1,4 @@
-import { Link } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import {
     Facebook,
     Instagram,
@@ -91,9 +91,10 @@ import {
         <Left>
           <Logo>CINEMATIME</Logo>
           <Desc>
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don’t look even slightly believable.
+            Cinematime sprijină cinematografia în România.
+            Cinematografia este tehnica sau arta de a înregistra
+             fotografic unele scene pe un film special și de a le
+              reproduce prin proiectare luminoasă pe un ecran.
           </Desc>
           <SocialContainer>
             <SocialIcon color="3B5999">
@@ -120,16 +121,16 @@ import {
             <Link to="/products/:category" style={{color: "black", cursor: "pointer"}}>Bilete</Link>
             </ListItem>
             <ListItem>
-            <Link to="" style={{color: "black", cursor: "pointer"}}>Oferte</Link>
+            <Link to="/oferte" style={{color: "black", cursor: "pointer"}}>Oferte</Link>
             </ListItem>
             <ListItem>
-            <Link to="" style={{color: "black", cursor: "pointer"}}>Vauchere</Link>
+            <Link to="/vauchere" style={{color: "black", cursor: "pointer"}}>Noutăți</Link>
             </ListItem>
             <ListItem>
             <Link to="/cart" style={{color: "black", cursor: "pointer"}}>Cos</Link>
             </ListItem>
             <ListItem>
-            <Link to="/favorite" style={{color: "black", cursor: "pointer"}}>favorite</Link>
+            <Link to="/favorite" style={{color: "black", cursor: "pointer"}}>Favorite</Link>
             </ListItem>
             <ListItem>
             <Link to="/user" style={{color: "black", cursor: "pointer"}}>Contul Meu</Link>

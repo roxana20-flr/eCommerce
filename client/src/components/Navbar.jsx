@@ -86,11 +86,15 @@ const Navbar = () => {
         </Center>
         <Line/>
         <Center>
+          <Link style={{textDecoration: 'none', color: "black"}}  to={`/oferte`}>
           <Logo>Oferte</Logo>
+          </Link>
         </Center>
         <Line/>
         <Center>
-          <Logo>Vauchere</Logo>
+          <Link style={{textDecoration: 'none', color: "black"}}  to={`/vauchere`}>
+          <Logo>Noutăți</Logo>
+          </Link>
         </Center>
         <Right>
           {/* <MenuItem>REGISTER</MenuItem> */}
